@@ -1,7 +1,7 @@
 /* basic style */
 
 .bg-blue {
-    background-color: #03A9F3;
+    background-color: #03a9f4;
 }
 
 /* hero section */
@@ -24,7 +24,6 @@
     text-transform: uppercase;
     font-size: 50px;
     line-height: 50px;
-
 }
 
 .hero .subtitle {
@@ -34,23 +33,56 @@
     font-size: 18px;
     line-height: 22px;
     color: #555;
-
 }
 
 .hero .clock {
     margin-bottom: 60px;
-
 }
 
-.hero .form {
+.hero form {
     margin-bottom: 20px;
-
 }
 
 .hero .mouse {
-
 }
 
 /* main section */
+
+.left-column {
+    display: inline-block;
+    float: left;
+    width: 50%;
+}
+.right-column {
+    display: inline-block;
+    float: right;
+    width: 40%;
+}
+
+main .block-title {
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+main .block-description {
+    margin-bottom: 30px;
+    font-size: 18px;
+}
+main .block-description > a {
+    color: #ea1e63;
+    text-decoration: none;
+}
+main .block-description > a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+    .left-column {
+        width: 100%;
+        margin-bottom: 60px;
+    }
+    .right-column {
+        width: 100%;
+    }
+}
 
 /* footer section */
