@@ -1,7 +1,25 @@
-function clock(selector) {
+function clock(selector, deadline) {
+    // input validation
+    if (typeof selector !== 'string' ||
+        selector === '') {
+        console.error('ERROR: netinkamo formato selectorius.');
+        return false;
+    }
+    if (typeof deadline !== 'string' ||
+        deadline === '' ||
+        !isFinite((new Date(`2000-${deadline}`)).getTime())) {
+        console.error('ERROR: netinkamo formato deadline reiksme.');
+        return false;
+    }
+
+    // logic
     const clockDOM = document.querySelector(selector);
+    if (!clockDOM) {
+        console.error('ERROR: pagal pateikta selectoriu nepavyko rasti norimo DOM elemento.');
+        return false;
+    }
+
     let allValuesDOM = null;
-    const deadline = '01-04 14:00:00';
     let numbers = calcTime(deadline);
     const labels = ['days', 'hours', 'minutes', 'seconds'];
     let HTML = '';
@@ -16,13 +34,13 @@ function clock(selector) {
     clockDOM.innerHTML = HTML;
     allValuesDOM = document.querySelectorAll(`${selector} .value`);
 
-
-setInterval(function () {
-    numbers = calcTime(deadline);
-    for (let i = 0; i < 4; i++) {
-        allValuesDOM[i].innerText = numberFormat(numbers[i]);
-    }
-}, 1000);
+    setInterval(function () {
+        numbers = calcTime(deadline);
+        for (let i = 0; i < 4; i++) {
+            allValuesDOM[i].innerText = numberFormat(numbers[i]);
+        }
+    }, 1000);
+}
 
 function numberFormat(number) {
     if (number < 10) {
@@ -59,6 +77,4 @@ function calcTime(deadline) {
     return [days, hours, minutes, unusedSeconds];
 }
 
-
 export { clock }
-}
