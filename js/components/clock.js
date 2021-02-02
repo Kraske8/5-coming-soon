@@ -1,7 +1,8 @@
 function clock(selector) {
     const clockDOM = document.querySelector(selector);
+    let allValuesDOM = null;
     const deadline = '01-04 14:00:00';
-    let numbers = calcTime();
+    let numbers = calcTime(deadline);
     const labels = ['days', 'hours', 'minutes', 'seconds'];
     let HTML = '';
 
@@ -13,11 +14,14 @@ function clock(selector) {
     }
 
     clockDOM.innerHTML = HTML;
-}
+    allValuesDOM = document.querySelectorAll(`${selector} .value`);
+
 
 setInterval(function () {
     numbers = calcTime(deadline);
-    console.log(numbers);
+    for (let i = 0; i < 4; i++) {
+        allValuesDOM[i].innerText = numberFormat(numbers[i]);
+    }
 }, 1000);
 
 function numberFormat(number) {
@@ -29,18 +33,32 @@ function numberFormat(number) {
 
 function calcTime(deadline) {
     const date = new Date();
+    const now = Date.now();
     let year = date.getFullYear();
     let fullDeadline = `${year}-${deadline}`;
-    const fullDeadlineInMiliseconds = (new Date(fullDeadline)).getTime();
+    let fullDeadlineInMiliseconds = (new Date(fullDeadline)).getTime();
 
-    if (fullDeadlineInMiliseconds < Date.now()) {
+    if (fullDeadlineInMiliseconds < now) {
         year++;
         fullDeadline = `${year}-${deadline}`;
+        fullDeadlineInMiliseconds = (new Date(fullDeadline)).getTime();
     }
 
-    console.log(fullDeadline);
-    return [432, 9, 37, 39];
+    const diff = fullDeadlineInMiliseconds - now;
+    const seconds = Math.round(diff / 1000);
+
+    const days = Math.floor(seconds / 60 / 60 / 24);
+    let unusedSeconds = seconds - days * 60 * 60 * 24;
+
+    const hours = Math.floor(unusedSeconds / 60 / 60);
+    unusedSeconds -= hours * 60 * 60;
+
+    const minutes = Math.floor(unusedSeconds / 60);
+    unusedSeconds -= minutes * 60;
+
+    return [days, hours, minutes, unusedSeconds];
 }
 
 
-export { clock } 
+export { clock }
+}
