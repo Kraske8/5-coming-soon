@@ -1,17 +1,22 @@
 /* basic style */
-.bg-blue {
-    background-color: #03a9f4;
+
+.bg-main {
+    background-color: var(--main-color);
 }
+
 /* hero section */
+
 .hero {
     text-align: center;
     padding-bottom: 30px;
 }
+
 .hero .logo {
     display: inline-block;
     height: 30px;
     margin-bottom: 40px;
 }
+
 .hero .title {
     display: inline-block;
     width: 100%;
@@ -20,6 +25,7 @@
     font-size: 50px;
     line-height: 50px;
 }
+
 .hero .subtitle {
     display: inline-block;
     width: 100%;
@@ -28,15 +34,20 @@
     line-height: 22px;
     color: #555;
 }
+
 .hero .clock {
     margin-bottom: 60px;
 }
+
 .hero form {
     margin-bottom: 20px;
 }
+
 .hero .mouse {
 }
+
 /* main section */
+
 .left-column {
     display: inline-block;
     float: left;
@@ -47,6 +58,7 @@
     float: right;
     width: 40%;
 }
+
 main .block-title {
     margin-bottom: 30px;
     text-transform: uppercase;
@@ -62,6 +74,7 @@ main .block-description > a {
 main .block-description > a:hover {
     text-decoration: underline;
 }
+
 @media (max-width: 900px) {
     .left-column {
         width: 100%;
@@ -80,7 +93,6 @@ footer.container {
     color: #fff9;
     padding-top: 0;
 }
-
 .container > .socials {
     padding: 15px 0;
     border-bottom: 2px solid #fff;
@@ -102,6 +114,7 @@ footer a {
     color: #fff;
     text-decoration: none;
 }
+
 .footer-logo {
     height: 40px;
     margin: 30px 0;
@@ -130,6 +143,7 @@ footer a {
 .bottom-texts > p:first-of-type::before {
     display: none;
 }
+
 .bottom-texts a:hover {
     text-decoration: underline;
 }
@@ -137,6 +151,7 @@ footer > .short-row > p {
     display: inline-block;
     width: 100%;
 }
+
 @media (max-width: 700px) {
     .bottom-texts {
         flex-direction: column;
