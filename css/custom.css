@@ -39,8 +39,15 @@
     margin-bottom: 60px;
 }
 
-.hero form {
+.hero .form {
     margin-bottom: 20px;
+}
+.hero .form > input {
+    color: #fff;
+    border-bottom-color: #fff;
+}
+.hero .form > input::placeholder {
+    color: #fff;
 }
 
 .hero .mouse {
@@ -68,11 +75,25 @@ main .block-description {
     font-size: 18px;
 }
 main .block-description > a {
-    color: #ea1e63;
+    color: var(--secondary-color);
     text-decoration: none;
 }
 main .block-description > a:hover {
     text-decoration: underline;
+}
+
+.right-column .form button {
+    float: right;
+}
+
+@media (min-width: 1100px) {
+    .right-column .form > input {
+        width: calc(50% - 10px);
+        float: left;
+    }
+    .right-column .form > input:first-of-type {
+        margin-right: 20px;
+    }
 }
 
 @media (max-width: 900px) {
